@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Support Task</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Additional Information</h1>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Request Type</label>
+            <div class="col-sm-10">
+                <input type="text" name="theme" class="form-control" value="{{variables.requestType}}" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Theme</label>
+            <div class="col-sm-10">
+                <input type="text" name="theme" class="form-control" value="{{variables.theme}}" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="description" rows="5" disabled>{{variables.description}}</textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Importance</label>
+            <div class="col-sm-10">
+                <input type="text" name="theme" class="form-control" value="{{variables.importance}}" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th class="col1">Date</th>
+                    <th class="col2">User</th>
+                    <th class="col3">Comment</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#variables.comments}}
+                    <tr>
+                        <td>{{commentDate}}</td>
+                        <td>{{userName}}</td>
+                        <td>{{comment}}</td>
+                    </tr>
+                {{/variables.comments}}
+                </tbody>
+            </table>
+        </div>
+
+    <form action="/process/complete_task" method="post">
+
+        <input type="hidden" name="taskId" value="{{taskId}}">
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Comment</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="comment" rows="2"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>
